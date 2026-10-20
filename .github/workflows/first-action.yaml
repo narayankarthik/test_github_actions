@@ -1,0 +1,14 @@
+name: First Action
+on: workflow_dispatch
+jobs:
+    first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: first step
+              run: |
+                echo "First line"
+                echo "Second line"
+
+            - name: second step
+              run: echo "First line"
+
