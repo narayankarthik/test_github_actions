@@ -1,0 +1,23 @@
+name: Events Demo
+# on: [push, workgroup_dispatch]
+on: 
+    pull_request:
+        types:
+            - opened
+        branches:
+            - main   
+    workflow_dispatch:
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v7
+            - name: Install dependencies
+              run: nmp ci
+            - name: Test code
+              run: nmp run test
+            - name: Build code
+              run: nmp build
+            - name: Deploy code
+              run: echo "Deployed."
