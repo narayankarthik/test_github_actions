@@ -1,6 +1,9 @@
 name: Events Demo
 # on: [push, workgroup_dispatch]
 on: 
+    push:
+        branches:
+            - main
     pull_request:
         types:
             - opened
@@ -14,10 +17,10 @@ jobs:
             - name: Get Code
               uses: actions/checkout@v7
             - name: Install dependencies
-              run: nmp ci
+              run: npm ci
             - name: Test code
-              run: nmp run test
+              run: npm run test
             - name: Build code
-              run: nmp build
+              run: npm build
             - name: Deploy code
               run: echo "Deployed."
