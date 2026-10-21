@@ -4,18 +4,22 @@ on:
     push:
         branches:
             - main
-            - 'dev-*'
-            - 'feature/**'
-        paths:
-            - '.github/workflows/**'
-    pull_request:
-        types:
-            - opened
-        branches:
-            - main   
     workflow_dispatch:
+    # push:
+    #     branches:
+    #         - main
+    #         - 'dev-*'
+    #         - 'feature/**'
+    #     paths:
+    #         - '.github/workflows/**'
+    # pull_request:
+    #     types:
+    #         - opened
+    #     branches:
+    #         - main 
+
 jobs:
-    deploy:
+    test:
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
@@ -24,7 +28,27 @@ jobs:
               run: npm ci
             - name: Test code
               run: npm run test
+
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v7
+            - name: Install dependencies
+              run: npm ci
             - name: Build code
               run: npm run build
+            - name: List file
+              run: ls -ltr
+
+            # - name: Upload artifacts
+            #   uses: actions/upload-artifact@v7
+            #   with:
+            #     name: fist-files
+            #     path: 
+
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
             - name: Deploy code
               run: echo "Deployed."
