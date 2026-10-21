@@ -30,6 +30,7 @@ jobs:
               run: npm run test
 
     build:
+        needs: test
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
@@ -38,16 +39,16 @@ jobs:
               run: npm ci
             - name: Build code
               run: npm run build
-            - name: List file
-              run: ls -ltr
-
-            # - name: Upload artifacts
-            #   uses: actions/upload-artifact@v7
-            #   with:
-            #     name: fist-files
-            #     path: 
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v7
+              with:
+                name: fist-files
+                path: |
+                    dist
+                    package.json
 
     deploy:
+        needs: build
         runs-on: ubuntu-latest
         steps:
             - name: Deploy code
