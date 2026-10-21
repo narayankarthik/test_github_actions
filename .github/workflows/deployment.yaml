@@ -1,5 +1,5 @@
 name: Deployment job
-on: push
+on: [workflow_dispatch, push]
 
 jobs:
     test:
