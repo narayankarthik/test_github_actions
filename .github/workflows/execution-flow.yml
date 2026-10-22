@@ -75,3 +75,10 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    if: failure()
+    needs: ['lint', 'deploy']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Printing git variables
+        run: echo "${{ toJson(github) }}"
