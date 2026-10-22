@@ -1,5 +1,7 @@
 name: First Action
-on: workflow_dispatch
+on: push
+env:
+    workflow-env: "Job Environment Value"
 jobs:
     first-job:
         runs-on: ubuntu-latest
@@ -12,3 +14,17 @@ jobs:
               run: echo "First line"
             - name: Get github context
               run: echo "${{ toJson(github) }}"
+            - name: Print variables
+              run: |
+                echo "job-env: ${{ env.job-env }}(dont have access)"
+                echo "workflow-env: ${{ env.workflow-env }}""
+    env-job:
+        runs-on: ubuntu-latest
+        env:
+            job-env: "Job Environment Value"
+        steps:
+            - name: Print variables
+              run: |
+                echo "job-env: ${{ env.job-env }}""
+                echo "workflow-env: ${{ env.workflow-env }}""
+

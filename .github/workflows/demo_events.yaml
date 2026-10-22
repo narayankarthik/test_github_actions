@@ -1,9 +1,9 @@
 name: Events Demo
 # on: [push, workgroup_dispatch]
 on: 
-    push:
-        branches:
-            - main
+    # push:
+    #     branches:
+    #         - main
     workflow_dispatch:
     # push:
     #     branches:
