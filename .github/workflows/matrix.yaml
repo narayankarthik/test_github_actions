@@ -7,6 +7,12 @@ jobs:
         matrix:
             os-version: ['ubuntu-latest', 'windows-latest']
             nodejs-version: [12, 14, 16]
+            include:
+                - os-version: 'ubuntu-latest'
+                  nodejs-version: 18
+            exclude:
+                - os-version: 'windows-latest'
+                  nodejs-version: 12
     runs-on: ${{ matrix.os-version }}
     steps:
       - name: Get code
