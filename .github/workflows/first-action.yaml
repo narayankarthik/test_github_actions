@@ -17,7 +17,7 @@ jobs:
             - name: Print variables
               run: |
                 echo "job-env: ${{ env.job-env }}(dont have access)"
-                echo "workflow-env: ${{ env.workflow-env }}""
+                echo "workflow-env: ${{ env.workflow-env }}"
     env-job:
         runs-on: ubuntu-latest
         env:
