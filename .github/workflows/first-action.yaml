@@ -25,7 +25,7 @@ jobs:
         steps:
             - name: Print variables
               run: |
-                echo "job-env: ${{ env.job-env }}""
-                echo "workflow-env: ${{ env.workflow-env }}""
-                echo "TEST_REPO_SECRET: ${{ secrets.TEST_REPO_SECRET }}
+                echo "job-env: ${{ env.job-env }}"
+                echo "workflow-env: ${{ env.workflow-env }}"
+                echo "TEST_REPO_SECRET: ${{ secrets.TEST_REPO_SECRET }}"
 
