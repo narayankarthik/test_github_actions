@@ -5,11 +5,7 @@ on:
       - main
 jobs:
   lint:
-    strategy:
-      matrix:
-        os-version: ['ubuntu-latest', 'windows-latest']
-    # runs-on: ubuntu-latest
-    runs-on: ${{ matrix.os-version }}
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v7
@@ -26,7 +22,7 @@ jobs:
       - name: Lint code
         run: npm run lint
   test:
-    runs-on: ${{ matrix.os-version }}
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v7
@@ -52,7 +48,7 @@ jobs:
           path: test.json
   build:
     needs: test
-    runs-on: ${{ matrix.os-version }}
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v7
@@ -76,7 +72,7 @@ jobs:
           path: dist
   deploy:
     needs: build
-    runs-on: ${{ matrix.os-version }}
+    runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
         uses: actions/download-artifact@v7
@@ -89,7 +85,7 @@ jobs:
   report:
     if: failure()
     needs: [lint, deploy]
-    runs-on: ${{ matrix.os-version }}
+    runs-on: ubuntu-latest
     steps:
       - name: Printing git variables
         run: echo "${{ toJson(github) }}"
