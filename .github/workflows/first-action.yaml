@@ -1,7 +1,7 @@
 name: First Action
 on: push
 env:
-    workflow-env: "Job Environment Value"
+    workflow-env: "Workflow Environment Value"
 jobs:
     first-job:
         runs-on: ubuntu-latest
