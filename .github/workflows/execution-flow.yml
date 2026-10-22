@@ -7,7 +7,7 @@ jobs:
   lint:
     strategy:
       matrix:
-        os-version: ['ubuntu-latest', 'windors-latest']
+        os-version: ['ubuntu-latest', 'windows-latest']
     # runs-on: ubuntu-latest
     runs-on: ${{ matrix.os-version }}
     steps:
