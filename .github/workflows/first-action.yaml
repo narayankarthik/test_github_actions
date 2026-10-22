@@ -1,5 +1,5 @@
 name: First Action
-on: push
+on: workflow_dispatch
 env:
     workflow-env: "Workflow Environment Value"
 jobs:
