@@ -73,6 +73,8 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yaml
+    with:
+      artifact-id: dist-files
   # deploy:
   #   needs: build
   #   runs-on: ubuntu-latest
