@@ -1,0 +1,15 @@
+name: "Copy source to target"
+description: 'Copies all the files from source to target'
+inputs:
+  source_folder:
+    description: 'source folder path'
+    required: true
+  dest_folder:
+    description: 'destination folder path'
+    required: true
+outputs:
+  op-msg:
+    description: 'output message from consol'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
