@@ -10,7 +10,12 @@ jobs:
       - name: Get code
         uses: actions/checkout@v7
       - name: Install and Cache dependencies
+        id: cache-deps
         uses: ./.github/actions/cache_composite
+        with:
+          caching: 'true'
+      - name: Output information
+        run: echo "${{ steps.cache-deps.outputs.cache-used }}"
       - name: Lint code
         run: npm run lint
   test:
